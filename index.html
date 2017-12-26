@@ -19,61 +19,43 @@
 </head>
 
 <body>
-<!-- HEADER -->
-	<header>
-        
-            
-       <!-- <nav class="nav navsetting"> <div class="row">
-             <div class="col-md-4">
-        <div class="card bg-success">
-          <div class="card-header"><img id="card" src="assets/images/win.png" alt="win" width="30px" height="30px"></div>
-          using an ID here so we can hook to it in Javascriot to change as the rounds progress
-          <h3 id="wins" class="text-center"></h3>
-        </div>
-             </div>
-             <div class="col-md-4">
-        <div class="card bg-danger">
-          <div class="card-header"><img id="card" src="assets/images/loss.png" alt="loss" width="30px" height="30px"></div>
-          using an ID here so we can hook to it in Javascriot to change as the rounds progress
-          <h3 id="losses" class="text-center"></h3>
-        </div>
-             </div> -->
-      
-</div></nav>
-      
-      
-  </header>
      
 <!-- MAIN CONTAINTENT -->
 	<div class="container">
     <div class="jumbotron jumbosetting" >
       <div class="wrapper">
-        <img class="rounded-circle animated slideInRight" src="assets/images/logo.png" alt="logo" width="250px" height="250px">
-        <img id="hangmantext" class="animated hinge" src="assets/images/title.png"  alt="title" width="250px" height="auto">
-      <p>Use the alphabet below to guess the word or click hint to get a clue. </p>
-      <hr>
-      <div id="buttons"> </div>  
-      <hr>
-      <div class="row ">
-
-        <div class="col-md-6">
-          <p id="catagoryName"></p> <br><br>
-          <div id="hold" > </div> <br><br>
-          <p id="mylives"></p><br><br>
-          <p id="clue"> </p><br><br>
-        </div>
-        <div class="col-md-2 ">  
-            <canvas id="stickman">This Text will show if the Browser does NOT support HTML5 Canvas tag</canvas>
-        </div>
-
-        <div class="container">
-            <hr>
-            <button id="hint">Hint</button>
-            <button id="reset">Play again</button>
+        <img class="rounded-circle animated infinite slideInRight" src="assets/images/logo.png" alt="logo" width="250px" height="250px">
+        <img id="hangmantext" class="animated  hinge" src="assets/images/title.png"  alt="title" width="250px" height="auto">
+        <p>Use the alphabet below to guess the word or click hint to get a clue. </p> </div>  
+        <hr>
+        <div id="buttons"> </div> 
+        <hr>
+        <p id="catagoryName"></p> <br><br>
+        <div id="hold" > </div> <br><br>
+        <hr>
+        <div class="row ">
+          <div class="col">
+              <img id="myImage" class="animated infinite bounce"  width="300" height="auto" />
+              <audio id="myAudio" preload="none" autoplay="autoplay"></audio> 
+              <button id="reset">Play again</button>
           </div>
-        <!-- </div> -->
+          <div class="col">
+               <p id="mylives" ></p><br><br> 
+               <p id="clue"> </p><br><br>
+          </div>
+          <div class="col">
+             <div class="col">
+                <canvas id="stickman">This Text will show if the Browser does NOT support HTML5 Canvas tag</canvas> 
+            </div>
+             <div class="col">
+              <button id="hint">Hint</button>
+             </div>
+           </div>
+
+        </div>
     </div>
-  </div>		
+  </div>	
+
 
 <!-- Js code -->
 <script type="text/javascript">
@@ -99,7 +81,9 @@
   var showCatagory = document.getElementById("catagoryName");
   var getHint = document.getElementById("hint");
   var showClue = document.getElementById("clue");
-
+  var seeImage = document.getElementById("myImage");
+  var playAudio = document.getElementById("myAudio");
+           
 
 
   // create alphabet ul
@@ -122,11 +106,11 @@
   // Select Catagory
   var selectCat = function () {
     if (chosenCategory === categories[0]) {
-      catagoryName.innerHTML = "The Chosen Category Is Premier League Football Teams";
+      catagoryName.innerHTML = "The  Category Is cartoons characters";
     } else if (chosenCategory === categories[1]) {
-      catagoryName.innerHTML = "The Chosen Category Is Films";
+      catagoryName.innerHTML = "The Category Is Dianasours";
     } else if (chosenCategory === categories[2]) {
-      catagoryName.innerHTML = "The Chosen Category Is Cities";
+      catagoryName.innerHTML = "The Category Is Cars";
     }
   }
 
@@ -154,18 +138,21 @@
   
   // Show lives
    comments = function () {
-    showLives.innerHTML = "You have " + lives + " lives";
+    showLives.innerHTML = "You have   " +   lives   + "     lives";
     if (lives < 1) {
-      showLives.innerHTML = "Game Over";
+      showLives.innerHTML = "Game Over "  + "<br>"+ "<br>" +  "Correct answer is  :    " + word;
+      playAudio.setAttribute("src","assets/mp3/next.wav");
     }
     for (var i = 0; i < geusses.length; i++) {
       if (counter + space === geusses.length) {
-        showLives.innerHTML = "You Win!";
+        showLives.innerHTML = "You Win!"  + "<br>" + "<br>"+ word ;
+        showPicture();
+        listenAudio();
       }
     }
   }
 
-      // Animate man
+        // Animate man
   var animate = function () {
     var drawMe = lives ;
     drawArray[drawMe]();
@@ -178,8 +165,8 @@
     myStickman = document.getElementById("stickman");
     context = myStickman.getContext('2d');
     context.beginPath();
-    context.strokeStyle = "#fff";
-    context.lineWidth = 2;
+    context.strokeStyle = 'blue';
+    context.lineWidth = 5;
   };
   
     head = function(){
@@ -253,19 +240,20 @@
         lives -= 1;
         comments();
         animate();
-      } else {
+        } else {
         comments();
+        
       }
     }
   }
   
     
-  // Play
-  play = function () {
+  // start Game
+ startGame = function () {
     categories = [
-        ["everton", "liverpool", "swansea", "chelsea", "hull", "manchester-city", "newcastle-united"],
-        ["alien", "dirty-harry", "gladiator", "finding-nemo", "jaws"],
-        ["manchester", "milan", "madrid", "amsterdam", "prague"]
+        ["pocoyo", "peppa pig", "caillou", "paw-patrol"],
+        ["tyrannosaurus-rex", "diplodocus", "triceratops", "troodon", "megalosaurus"],
+        ["mater", "sally", "guido", "fillmore", "flo" ,"lightning-mcqueen"]
     ];
 
     chosenCategory = categories[Math.floor(Math.random() * categories.length)];
@@ -284,16 +272,53 @@
     canvas();
   }
 
-  play();
-  
+  startGame();
+
+
+//  show Answer Image
+var listOfImages =[
+            ["assets/images/pocoyo.jpg", "assets/images/pocoyo.jpg", "assets/images/caillou.jpg",
+            "assets/images/pawpatrol.jpg"],
+
+            ["assets/images/trex.png","assets/images/Diplodocus.png","assets/images/triceratops.png",
+            "assets/images/troodon.png","assets/images/Megalosaurus.png"],
+
+            ["assets/images/mater.jpg","assets/images/SallyCarreraCars2.jpg","assets/images/guido.jpg",
+            "assets/images/fillmore.jpg","assets/images/flo.jpg","assets/images/mcaqueen.png"]
+
+            
+           ]; 
+    function showPicture()  {      
+    var catagoryIndex = categories.indexOf(chosenCategory);
+    var imageIndex = chosenCategory.indexOf(word);
+    seeImage.src = listOfImages[catagoryIndex][imageIndex];
+  }
+// for audio
+var listOfAudio =[
+            ["assets/mp3/Pocoyo.mp3", "assets/mp3/peppa.mp3", "assets/mp3/Caillou.mp3",
+            "assets/mp3/paw.mp3"],
+
+            ["assets/mp3/trex.mp3","assets/mp3/diplodocus.mp3","assets/mp3/Trice.mp3",
+            "assets/mp3/troodon.mp3","assets/mp3/Megal.mp3"],
+
+            ["assets/mp3/Mater.mp3","assets/mp3/music.mp3","assets/mp3/music.mp3",
+            "assets/mp3/music.mp3","assets/mp3/Cars.mp3","assets/mp3/McQueen.mp3"]
+        ]; 
+    function listenAudio()  {      
+     var catagoryIndex = categories.indexOf(chosenCategory);
+    var audioIndex = chosenCategory.indexOf(word);
+    playAudio.setAttribute("src", listOfAudio[catagoryIndex][audioIndex]);
+    playAudio.play();
+  }
+
   // Hint
 
     hint.onclick = function() {
 
       hints = [
-        ["Based in Mersyside", "Based in Mersyside", "First Welsh team to reach the Premier Leauge", "Owned by A russian Billionaire", "Once managed by Phil Brown", "2013 FA Cup runners up", "Gazza's first club"],
-        ["Science-Fiction horror film", "1971 American action film", "Historical drama", "Anamated Fish", "Giant great white shark"],
-        ["Northern city in the UK", "Home of AC and Inter", "Spanish capital", "Netherlands capital", "Czech Republic capital"]
+        ["Spanish pre-school comedy animated television series ", "adventures of the titular, anthropomorphic animal along with her family and friends", "Aimed at the toddler and pre-school set",  "A group of six rescue..."],
+        ["is a genus of coelurosaurian theropod dinosaur ", "whose fossils were first discovered in 1877 by S. W. Williston", " is a genus of herbivorous ceratopsid dinosaur ", "a dubious genus of relatively small, bird-like dinosaurs", "a genus of large meat-eating theropod dinosaurs "],
+        ["best friend ", "girlfriend car", "assistant", "wife of Remone car", "race car"]
     ];
 
     var catagoryIndex = categories.indexOf(chosenCategory);
@@ -307,14 +332,12 @@
     correct.parentNode.removeChild(correct);
     letters.parentNode.removeChild(letters);
     showClue.innerHTML = "";
+    seeImage.src = "";
     context.clearRect(0, 0, 400, 400);
-    play();
+    startGame();
   }
 }
-        </script>
-
-    
-    
+  </script>  
     
   </body>
 </html>

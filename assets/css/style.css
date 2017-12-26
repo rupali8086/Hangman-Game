@@ -21,22 +21,22 @@
     height: auto;
     margin-top: 25px;
     }
-    /* #letters button:hover {
-      color:blue;
-      background-color: white;
-      font-weight: bolder;
-      font-size: 25px;
-    }
-    #letters button:disabled {
-      color:black;
-      background-color: black;
-     */
-    }
+
+    .animated.slideInRight {
+  animation-duration: 25s;
+  animation-delay: 5s;
+}
+
+ .animated.hinge {
+  /* animation-duration: 25s;
+  animation-delay: 5s; */
+}
+    
   #hangmantext {
       
     margin-top: 10px;
     margin-right: 410px;
-    width: 50px;
+    width: 277px;
      height: auto;
     } 
      .rounded-circle {
@@ -54,13 +54,7 @@
     width: 285px;
     float: right;
   }
-
-
-  /* Variabes */
-/* Mixin's */
-
-
-.wrappper {
+ .wrappper {
   width: 100%;
   margin: 0 auto;
 }
@@ -72,12 +66,12 @@
 
 canvas {
   color: #fff;
-  border: #fff dotted 3px;
-  background-image: url("../images/h1.jpg");
+  border: blue dotted 5px;
+  background-color: white;
   padding: 5px;
-  width: 265px;
+  width: 200px;
   padding-right: 0px;
-}
+  }
 
 h1, h2, h3 {
   font-family: 'Roboto', sans-serif;
@@ -97,10 +91,13 @@ h2 {
 p {
   font-size: 1.6em;
 }
+.col{
+  margin-left: 61px;
+  margin-right: 30px;
+}
 #mylives{
   color: yellow;
   font-size: 5.6em;
-
 }
 
 #alphabet {
@@ -118,7 +115,7 @@ p {
   float: left;
   margin: 0 10px 10px 0;
   list-style: none;
-  width: 35px;
+  width: 57px;
   height: 35px;
   padding-top: 10px;
   background: #fff;
@@ -127,7 +124,7 @@ p {
   cursor: pointer;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  border-radius: 5px;
+  border-radius: 20px;
   -khtml-border-radius: 5px;
   border: solid 1px #fff;
 }
@@ -172,12 +169,14 @@ p {
   -moz-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
 }
-
 #mylives {
-  font-size: 1.6em;
-  text-align: center;
-  display: block;
+  font-size: 25px;
+  color: #c1d72e;
+  font-weight: bold;
+  font-family: arial;
 }
+
+
 
 button {
   -moz-border-radius: 5px;
@@ -217,3 +216,5 @@ button:hover {
 
 
   
+
+   
