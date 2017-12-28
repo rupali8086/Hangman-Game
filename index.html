@@ -6,12 +6,12 @@
 <head>
   <!-- Viewport for Media Queries -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta charset="UTF-8">
+	  <meta charset="UTF-8">
 
   	<title>Hangman Game </title>
 
-	<script src= "https://use.fontawesome.com/bbbffb3a60.js"> </script>
-  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	   <script src= "https://use.fontawesome.com/bbbffb3a60.js"> </script>
+  	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
   	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -57,10 +57,11 @@
   </div>	
 
 
+
 <!-- Js code -->
 <script type="text/javascript">
   
-   window.onload = function () {
+window.onload = function () {
 
   var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
@@ -86,7 +87,8 @@
            
 
 
-  // create alphabet ul
+  // create alphabet ul ----------------------------------------------------------------------------
+
   var buttons = function () {
     myButtons = document.getElementById('buttons');
     letters = document.createElement('ul');
@@ -103,7 +105,8 @@
   }
     
   
-  // Select Catagory
+  // Select Catagory ----------------------------------------------------------------------------
+
   var selectCat = function () {
     if (chosenCategory === categories[0]) {
       catagoryName.innerHTML = "The  Category Is cartoons characters";
@@ -114,7 +117,8 @@
     }
   }
 
-  // Create geusses ul
+  // Create geusses ul ----------------------------------------------------------------------------
+
    result = function () {
     wordHolder = document.getElementById('hold');
     correct = document.createElement('ul');
@@ -136,7 +140,8 @@
     }
   }
   
-  // Show lives
+  // Show lives ----------------------------------------------------------------------------
+
    comments = function () {
     showLives.innerHTML = "You have   " +   lives   + "     lives";
     if (lives < 1) {
@@ -152,14 +157,16 @@
     }
   }
 
-        // Animate man
+  // Animate man ----------------------------------------------------------------------------
+
   var animate = function () {
     var drawMe = lives ;
     drawArray[drawMe]();
   }
 
   
-   // Hangman
+  // Hangman ----------------------------------------------------------------------------
+
   canvas =  function(){
 
     myStickman = document.getElementById("stickman");
@@ -182,7 +189,7 @@
     context.moveTo($pathFromx, $pathFromy);
     context.lineTo($pathTox, $pathToy);
     context.stroke(); 
-}
+  }
 
    frame1 = function() {
      draw (0, 150, 150, 150);
@@ -223,7 +230,8 @@
   drawArray = [rightLeg, leftLeg, rightArm, leftArm,  torso,  head, frame4, frame3, frame2, frame1]; 
 
 
-  // OnClick Function
+  // OnClick Function ----------------------------------------------------------------------------
+
    check = function () {
     list.onclick = function () {
       var geuss = (this.innerHTML);
@@ -248,8 +256,9 @@
   }
   
     
-  // start Game
- startGame = function () {
+  // start Game ----------------------------------------------------------------------------
+
+    startGame = function () {
     categories = [
         ["pocoyo", "peppa pig", "caillou", "paw-patrol"],
         ["tyrannosaurus-rex", "diplodocus", "triceratops", "troodon", "megalosaurus"],
@@ -275,8 +284,9 @@
   startGame();
 
 
-//  show Answer Image
-var listOfImages =[
+//  show Answer Image ----------------------------------------------------------------------------
+
+      var listOfImages =[
             ["assets/images/pocoyo.jpg", "assets/images/pocoyo.jpg", "assets/images/caillou.jpg",
             "assets/images/pawpatrol.jpg"],
 
@@ -293,8 +303,9 @@ var listOfImages =[
     var imageIndex = chosenCategory.indexOf(word);
     seeImage.src = listOfImages[catagoryIndex][imageIndex];
   }
-// for audio
-var listOfAudio =[
+
+// for audio ----------------------------------------------------------------------------
+      var listOfAudio =[
             ["assets/mp3/Pocoyo.mp3", "assets/mp3/peppa.mp3", "assets/mp3/Caillou.mp3",
             "assets/mp3/paw.mp3"],
 
@@ -309,10 +320,9 @@ var listOfAudio =[
     var audioIndex = chosenCategory.indexOf(word);
     playAudio.setAttribute("src", listOfAudio[catagoryIndex][audioIndex]);
     playAudio.play();
-  }
+   }
 
-  // Hint
-
+  // Hint ----------------------------------------------------------------------------
     hint.onclick = function() {
 
       hints = [
@@ -324,18 +334,18 @@ var listOfAudio =[
     var catagoryIndex = categories.indexOf(chosenCategory);
     var hintIndex = chosenCategory.indexOf(word);
     showClue.innerHTML += hints [catagoryIndex][hintIndex];
-  };
+    };
 
-   // Reset
-
-  document.getElementById('reset').onclick = function() {
+   // Reset ------------------------------------------------------------------------------
+    document.getElementById('reset').onclick = function() {
     correct.parentNode.removeChild(correct);
     letters.parentNode.removeChild(letters);
     showClue.innerHTML = "";
     seeImage.src = "";
     context.clearRect(0, 0, 400, 400);
+    startGame().removeClass("animated");
     startGame();
-  }
+    }
 }
   </script>  
     

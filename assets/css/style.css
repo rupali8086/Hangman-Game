@@ -149,6 +149,8 @@ p {
   display: inline-block;
   padding: 0 10px;
   font-size: 1.6em;
+  font-family: "Comic Sans MS", "Helvetica Neue Light", "Helvetica Neue";
+  color: #c1d72e;
 }
 
 .active {
@@ -158,7 +160,26 @@ p {
   -moz-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   cursor: default;
+   position: relative;
+  -webkit-animation-name: example;  
+    -webkit-animation-duration: 3s;  /* Safari 4.0 - 8.0 */    
+    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 3s;    
+    animation-fill-mode: forwards;
 }
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+    from {top: 0px; }
+    to {top: 400px; background-color: yellow; }
+}
+
+@keyframes example {
+    from {top: 0px;}
+    to {top: 400px; background-color: red;}
+}
+
 .active:hover {
   -moz-transition: all 1s ease-in;
   -moz-transition: all 0.3s ease-in-out;
@@ -168,6 +189,7 @@ p {
   -moz-transition: all 1s ease-in;
   -moz-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
+
 }
 #mylives {
   font-size: 25px;
