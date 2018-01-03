@@ -14,22 +14,22 @@
   font-size: 12px;
   }
   
-    .jumbosetting {
+.jumbosetting {
       background-image: url("../images/jumbo.jpg") ;
-    border-radius: 2.3rem;
+    border-radius: 7.3rem;
     width: 1153px;
-    height: auto;
+    height: 650px;
     margin-top: 25px;
-    }
+  }
 
-    .animated.slideInRight {
+.animated.slideInRight {
   animation-duration: 25s;
-  animation-delay: 5s;
+  animation-delay: 2s;
 }
 
  .animated.hinge {
-  /* animation-duration: 25s;
-  animation-delay: 5s; */
+   animation-duration: 25s;
+  animation-delay: 1s; 
 }
     
   #hangmantext {
@@ -65,12 +65,12 @@
 }
 
 canvas {
-  color: #fff;
-  border: blue dotted 5px;
+  border: red solid 5px;
   background-color: white;
   padding: 5px;
   width: 200px;
   padding-right: 0px;
+  margin-left: 15px;
   }
 
 h1, h2, h3 {
@@ -172,12 +172,12 @@ p {
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes example {
     from {top: 0px; }
-    to {top: 400px; background-color: yellow; }
+    to {top: 300px; background-color: yellow; }
 }
 
 @keyframes example {
     from {top: 0px;}
-    to {top: 400px; background-color: red;}
+    to {top: 300px; background-color: red;}
 }
 
 .active:hover {
@@ -196,6 +196,10 @@ p {
   color: #c1d72e;
   font-weight: bold;
   font-family: arial;
+}
+#buttons{
+  width: 655px;
+    margin-left: 50px;
 }
 
 
@@ -235,8 +239,3 @@ button:hover {
     padding: 0 0 0 25px;
   }
 }
-
-
-  
-
-   
